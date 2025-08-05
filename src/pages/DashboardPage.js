@@ -1,60 +1,92 @@
-import React, { useState } from 'react';
-import './DashboardPage.css';
+import React, { useState } from "react";
+import "./DashboardPage.css";
 
 const DashboardPage = () => {
   const [cards] = useState([
     {
       id: 1,
-      title: 'Mission & Business Applications',
+      title: "Mission & Business Applications",
       description:
-        'Modernize enterprise operations with connected digital platforms. Configure SaaS, develop tailored workflows, and integrate systems across agencies.',
-      image: 'mission.png',
+        "Modernize enterprise operations with connected digital platforms. Configure SaaS, develop tailored workflows, and integrate systems across agencies.",
+      image: "mission.png",
     },
     {
       id: 2,
-      title: 'Infrastructure & Cybersecurity',
+      title: "Infrastructure & Cybersecurity",
       description:
-        'Build resilient, automated hybrid cloud environments. Lead intelligent transformation and secure automation through DevSecOps.',
-      image: 'cybersecurity.png',
+        "Build resilient, automated hybrid cloud environments. Lead intelligent transformation and secure automation through DevSecOps.",
+      image: "cybersecurity.png",
     },
     {
       id: 3,
-      title: 'AI, Data, & Analytics',
+      title: "AI, Data, & Analytics",
       description:
-        'Turn complex data into mission-aligned decisions. Design scalable ecosystems and deliver insights with ML and GenAI.',
-      image: 'ai_data.png',
+        "Turn complex data into mission-aligned decisions. Design scalable ecosystems and deliver insights with ML and GenAI.",
+      image: "ai_data.png",
     },
     {
       id: 4,
-      title: 'Human-Centered Design',
+      title: "Human-Centered Design",
       description:
-        'Shape intuitive solutions that improve user outcomes. Lead UX research and prototype iteratively to increase adoption.',
-      image: 'design.png',
+        "Shape intuitive solutions that improve user outcomes. Lead UX research and prototype iteratively to increase adoption.",
+      image: "design.png",
     },
     {
       id: 5,
-      title: 'Enterprise Enablement & Training',
+      title: "Enterprise Enablement & Training",
       description:
-        'Equip people and processes for success. Reimagine operations and support scalable enterprise training programs.',
-      image: 'training.png',
+        "Equip people and processes for success. Reimagine operations and support scalable enterprise training programs.",
+      image: "training.png",
     },
   ]);
 
-  // Simulate getting the username from localStorage or API
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const username = user.email?.split('@')[0] || 'User';
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const username = user.email?.split("@")[0] || "User";
 
   return (
-    <div className="dashboard-container">
-      <div className="welcome-banner">Welcome, {username}</div>
+    <div className="dashboard-wrapper">
+      {/* Header */}
+      <header className="d-flex align-items-center justify-content-between p-3 border-bottom shadow-sm">
+        <div className="d-flex align-items-center">
+          <img
+            src="new_root_logo.png"
+            alt="newRoot Labs Logo"
+            style={{ height: "40px", marginRight: "10px" }}
+          />
+          <h4 className="m-0 text-danger">newRoot Labs</h4>
+        </div>
+        <div>
+          <span className="me-3">Welcome, {username}</span>
+          <a href="/signout" className="text-danger text-decoration-none">
+            Sign Out
+          </a>
+        </div>
+      </header>
 
-      <div className="card-grid">
-        {cards.map((card) => (
-          <div key={card.id} className="dashboard-card">
-            <h3>{card.title}</h3>
-            <p>{card.description}</p>
-          </div>
-        ))}
+      <nav className="border-bottom px-3 py-2 d-flex gap-3">
+        <a
+          className="text-danger fw-bold border-bottom border-danger pb-1"
+          href="#"
+        >
+          AI, Data, & Analytics
+        </a>
+        <a href="#">Infrastructure & Cybersecurity</a>
+        <a href="#">Enterprise Enablement & Training</a>
+        <a href="#">Human Centered Design</a>
+        <a href="#">Mission & Business Applications</a>
+       
+      </nav>
+      <div className="dashboard-container">
+        <h2> AI, Data, & Analytics</h2>
+        <p>Turn complex data into mission-aligned decisions</p>
+        <div className="card-grid">
+          {cards.map((card) => (
+            <div key={card.id} className="dashboard-card">
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
