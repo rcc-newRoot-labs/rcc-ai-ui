@@ -97,3 +97,32 @@
   width: auto; /* Keeps aspect ratio */
   margin-right: 16px;
 }
+.custom-navbar {
+  background-color:  #f1f1f1; /* grey background */
+  padding: 12px 16px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  background: transparent;
+  color: black;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px 6px 0 0;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  color: red; /* bold blue */
+  font-weight: bold;
+  /* box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2); */
+}
+
+.nav-item.active {
+  color: red; /* bold blue */
+  font-weight: bold;
+ /* // box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2); */
+}

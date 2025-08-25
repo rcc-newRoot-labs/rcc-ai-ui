@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./DashboardPage.css";
+import { useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
   const [cards] = useState([
@@ -43,6 +44,14 @@ const DashboardPage = () => {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const username = user.email?.split("@")[0] || "User";
 
+  const navigate = useNavigate();
+
+  const handleSignOut = (e) => {
+    e.preventDefault(); // prevent default anchor behavior
+    localStorage.removeItem("user");
+    navigate("/"); // navigate to LoginPage
+  };
+
   return (
     <div className="dashboard-wrapper">
       {/* Header */}
@@ -57,13 +66,17 @@ const DashboardPage = () => {
         </div>
         <div>
           <span className="me-3">Welcome, {username}</span>
-          <a href="/signout" className="text-danger text-decoration-none">
+          <a
+            href="/signout"
+            className="text-danger text-decoration-none"
+            onClick={handleSignOut}
+          >
             Sign Out
           </a>
         </div>
       </header>
 
-      <nav className="border-bottom px-3 py-2 d-flex gap-3">
+      {/* <nav className="border-bottom px-3 py-2 d-flex gap-3">
         <a
           className="text-danger fw-bold border-bottom border-danger pb-1"
           href="#"
@@ -75,7 +88,29 @@ const DashboardPage = () => {
         <a href="#">Human Centered Design</a>
         <a href="#">Mission & Business Applications</a>
        
+      </nav> */}
+      <nav className="custom-navbar">
+        <a href="#" className="nav-item active">
+           AI, Data, & Analytics
+        </a>
+        <a href="#" className="nav-item">
+          Infrastructure & Cybersecurity
+        </a>
+        <a href="#" className="nav-item">
+          Enterprise Enablement & Training
+        </a>
+        <a href="#" className="nav-item">
+          Human Centered Design
+        </a>
+        <a href="#" className="nav-item">
+          Mission & Business Applications
+        </a>
+        <a href="#" className="nav-item">
+          Academic Collaboration
+        </a>
+     
       </nav>
+
       <div className="dashboard-container">
         <h2> AI, Data, & Analytics</h2>
         <p>Turn complex data into mission-aligned decisions</p>
