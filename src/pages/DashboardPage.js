@@ -99,11 +99,12 @@ const DashboardPage = () => {
                 <div className="card-hover-text">
                   <h3>{card.title}</h3>
                  <p>{card.description}</p>
-                  <a href="https://www.google.com" target='_blank' className="btn btn-secondary">Navigate</a>
+                 <div className="card-footer bg-transparent border-success">
+                 <a href="https://www.google.com" target='_blank' className="btn btn-primary">Interact</a>
                 </div>
-                <div className="card-footer bg-transparent border-success">
-                 
+                  
                 </div>
+                
               </div>
             </div>
           ))}

@@ -108,10 +108,11 @@
   margin-right: 16px;
 }
 
-.btn-primary {
-  background-color: #555555; /* Red background */
-  color: rgb(244, 244, 241); /* Yellow text */
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #c00000  !important;
+    color: rgb(244, 244, 241); /* Yellow text */
 }
+
 
 .btn-primary:hover {
   background-color: #bf0000; /* Darker gray on hover */
