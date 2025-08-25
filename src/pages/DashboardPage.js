@@ -48,10 +48,6 @@ const DashboardPage = () => {
    const [showContent, setShowContent] = useState(false);
   
     const toggleContent = () => setShowContent(true);
-    if (toggleContent)  {
-     // return <Navigate to="/google.com"/>;
-     //window.location.href('https://www.google.com');
-    };
 
   return (
     <div className="dashboard-wrapper">
@@ -61,7 +57,7 @@ const DashboardPage = () => {
           <img
             src="new_root_logo.png"
             alt="newRoot Labs Logo"
-            fetchpriority="high"
+            fetchPriority="high"
             style={{ width: "143px" , height: "84px", marginRight: "10px" }}
           />
           <h4 className="my-custom-class">newRoot Labs</h4>
@@ -74,16 +70,14 @@ const DashboardPage = () => {
         </div>
       </header>
       <nav className="border-bottom px-3 py-2 d-flex gap-3">
+         <a href="#" className="text-dark">Home</a>
         <a
           className="text-danger fw-bold border-bottom border-danger pb-1"
           href="#"
         >
-          AI, Data, & Analytics
+          Innovations
         </a>
-        <a href="#" className="text-dark">Infrastructure & Cybersecurity</a>
-        <a href="#" className="text-dark">Enterprise Enablement & Training</a>
-        <a href="#" className="text-dark">Human Centered Design</a>
-        <a href="#" className="text-dark">Mission & Business Applications</a>
+        <a href="#" className="text-dark">Marketting</a>
        
       </nav>
       <div className="dashboard-container">
@@ -97,7 +91,7 @@ const DashboardPage = () => {
                 <div className="card-text">
                   <img
                     src={card.image}
-                    fetchpriority="high"
+                    fetchPriority="high"
                     style={{ width: "200px" , height: "80px" }}
                   />
                   <h5>{card.title}</h5>
@@ -107,7 +101,7 @@ const DashboardPage = () => {
                  <p>{card.description}</p>
                   <a href="https://www.google.com" target='_blank' className="btn btn-secondary">Navigate</a>
                 </div>
-                <div class="card-footer bg-transparent border-success">
+                <div className="card-footer bg-transparent border-success">
                  
                 </div>
               </div>
