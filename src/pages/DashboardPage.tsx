@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import "./DashboardPage.css";
 import { useNavigate } from "react-router-dom";
 
-const DashboardPage = () => {
-  const [cards] = useState([
+interface DashboardCard {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const DashboardPage: React.FC = () => {
+  const [cards] = useState<DashboardCard[]>([
     {
       id: 1,
       title: "Mission & Business Applications",
@@ -42,14 +49,14 @@ const DashboardPage = () => {
   ]);
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const username = user.email?.split("@")[0] || "User";
+  const username: string = user.email?.split("@")[0] || "User";
 
   const navigate = useNavigate();
 
-  const handleSignOut = (e) => {
-    e.preventDefault(); // prevent default anchor behavior
+  const handleSignOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     localStorage.removeItem("user");
-    navigate("/"); // navigate to LoginPage
+    navigate("/"); // Redirect to login
   };
 
   return (
@@ -76,22 +83,10 @@ const DashboardPage = () => {
         </div>
       </header>
 
-      {/* <nav className="border-bottom px-3 py-2 d-flex gap-3">
-        <a
-          className="text-danger fw-bold border-bottom border-danger pb-1"
-          href="#"
-        >
-          AI, Data, & Analytics
-        </a>
-        <a href="#">Infrastructure & Cybersecurity</a>
-        <a href="#">Enterprise Enablement & Training</a>
-        <a href="#">Human Centered Design</a>
-        <a href="#">Mission & Business Applications</a>
-       
-      </nav> */}
+      {/* Navbar */}
       <nav className="custom-navbar">
         <a href="#" className="nav-item active">
-           AI, Data, & Analytics
+          AI, Data, & Analytics
         </a>
         <a href="#" className="nav-item">
           Infrastructure & Cybersecurity
@@ -108,11 +103,11 @@ const DashboardPage = () => {
         <a href="#" className="nav-item">
           Academic Collaboration
         </a>
-     
       </nav>
 
+      {/* Dashboard Content */}
       <div className="dashboard-container">
-        <h2> AI, Data, & Analytics</h2>
+        <h2>AI, Data, & Analytics</h2>
         <p>Turn complex data into mission-aligned decisions</p>
         <div className="card-grid">
           {cards.map((card) => (
