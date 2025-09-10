@@ -23,7 +23,7 @@
   }
 
 .dashboard-card {
-  background: #fff;
+  background: #edecec;
   border: 1px solid #ddd;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -35,6 +35,15 @@
 
 .dashboard-card:hover {
   transform: scale(1.03);
+   background: #BFBFBF;
+}
+
+.dashboard-card:hover .card-text {
+  display: none;
+}
+
+.dashboard-card:hover .card-hover-text {
+  display: block; /* or flex, grid, etc., depending on layout */
 }
 
 .dashboard-card img {
@@ -79,6 +88,7 @@
   font-weight: 500;
   color: #333;
   margin-bottom: 20px;
+   background-color: #838080;
 }
 
 @media (max-width: 600px) {
@@ -96,6 +106,53 @@
   height: 40px; /* Reduce from 50px to 40px or less */
   width: auto; /* Keeps aspect ratio */
   margin-right: 16px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #c00000  !important;
+    color: rgb(244, 244, 241); /* Yellow text */
+}
+
+
+.btn-primary:hover {
+  background-color: #bf0000; /* Darker gray on hover */
+}
+a2 {
+    color: #0d0d0d;
+    text-decoration: none;
+}
+
+btn-link {
+  background-color: #555555; /* Red background */
+  color: rgb(244, 244, 241); /* Yellow text */
+}
+
+btn-link:hover {
+  background-color: #bf0000; /* Darker gray on hover */
+}
+
+a{
+  color: #040404!; /* Darker gray on hover */
+  text-decoration: none;
+}
+a:hover {
+  background-color: #c6c5c5; /* Darker gray on hover */
+}
+ .card-hover-text {
+      display: none;
+    }
+
+    .card:hover .card-text {
+      display: none;
+    }
+
+    .card:hover .card-hover-text {
+      display: block; /* or flex, grid, etc., depending on layout */
+    }
+
+  .my-custom-class {
+  font-family: 'Wix Madefor', sans-serif;
+  color: #bf0000;
 }
 .custom-navbar {
   background-color:  #f1f1f1; /* grey background */
