@@ -207,19 +207,58 @@ a:hover {
 }
 /* Home tab scrollable section */
 .homepage-container {
-  max-height: calc(100vh - 160px); /* leave space for header + navbar */
-  overflow-y: auto;               /* allow scrolling if content is long */
-  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;   /* compact padding */
+  line-height: 1.6;
 }
 
-/* Branch image */
+/* Sticky header */
+#SITE_HEADER {
+  top: 0;
+  z-index: 1000;
+  background: #fff; /* keep solid background so text doesn’t overlap */
+}
+
+/* Sticky navbar just below the header */
+.custom-navbar {
+  top: 84px;            /* adjust if your header is taller/shorter */
+  z-index: 999;
+  background: #f1f1f1;  /* matches your current navbar color */
+}
+/* Ensure the page can fill the viewport */
+html, body, #root {
+  height: 100%;
+}
+
+/* Column layout: header, then nav, then a flexible main that scrolls */
+.dashboard-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The main content takes remaining height and scrolls */
+.dashboard-container {
+  flex: 1;               /* fill leftover space */
+  overflow: auto;        /* scroll only this area */
+  padding: 1.25rem 1.5rem;
+}
+
+
+
+/* BRANCH image: tighter spacing */
 .home-branch {
   display: block;
-  margin: 1.5rem auto;    /* slightly less spacing */
-  max-width: 400px;       /* reduce from 600px → 400px */
-  width: 90%;             /* scales on smaller screens */
+  margin: 0.25rem auto;       /* almost no vertical margin */
+  width: clamp(160px, 20vw, 240px); /* even smaller, scales responsively */
   height: auto;
-  border-radius: 6px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Ensure tagline hugs the image */
+.homepage-container p:last-of-type {
+  margin-top: 0.25rem;  /* smaller gap below image */
+  text-align: center;
+  font-weight: 500;
 }
 
