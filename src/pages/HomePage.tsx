@@ -3,7 +3,10 @@ import React from "react";
 const HomePage: React.FC = () => {
   return (
     <section className="homepage-container">
-      <h2 className="mb-3">Welcome to newRoot Labs</h2>
+      {/* Red background section header */}
+      <div className="section-header">
+        <h2>Welcome to newRoot Labs</h2>
+      </div>
 
       <p>
         Explore our innovation lab, <strong>newRoot Labs</strong>, where
@@ -27,9 +30,10 @@ const HomePage: React.FC = () => {
         scale it.
       </p>
 
-      <h3 className="mt-2">
-        We call it B.R.A.N.C.H.—our six-phase innovation framework:
-      </h3>
+      <div className="section-subheader">
+        <h3>We call it B.R.A.N.C.H.—our six-phase innovation framework:</h3>
+      </div>
+
       <ul>
         <li>
           <strong>Brainstorm</strong> | Submit ideas in a lightweight intake
@@ -53,7 +57,6 @@ const HomePage: React.FC = () => {
         </li>
       </ul>
 
-      {/* Image at the bottom — served from /public */}
       <div className="home-branch-wrap">
         <img
           src="/BranchImage.png"

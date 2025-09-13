@@ -1,7 +1,6 @@
 .dashboard {
   padding: 20px;
 }
-/* DashboardPage.css */
 
 .dashboard-container {
   padding: 2rem;
@@ -103,8 +102,8 @@
   
 
 .dashboard-logo {
-  height: 40px; /* Reduce from 50px to 40px or less */
-  width: auto; /* Keeps aspect ratio */
+  height: 40px; 
+  width: auto; 
   margin-right: 16px;
 }
 
@@ -115,28 +114,27 @@
 
 
 .btn-primary:hover {
-  background-color: #bf0000; /* Darker gray on hover */
-}
+  background-color: #bf0000;
 a2 {
     color: #0d0d0d;
     text-decoration: none;
 }
 
 btn-link {
-  background-color: #555555; /* Red background */
-  color: rgb(244, 244, 241); /* Yellow text */
+  background-color: #555555;
+  color: rgb(244, 244, 241);
 }
 
 btn-link:hover {
-  background-color: #bf0000; /* Darker gray on hover */
+  background-color: #bf0000;
 }
 
 a{
-  color: #040404!; /* Darker gray on hover */
+  color: #040404!; 
   text-decoration: none;
 }
 a:hover {
-  background-color: #c6c5c5; /* Darker gray on hover */
+  background-color: #c6c5c5;
 }
  .card-hover-text {
       display: none;
@@ -147,7 +145,7 @@ a:hover {
     }
 
     .card:hover .card-hover-text {
-      display: block; /* or flex, grid, etc., depending on layout */
+      display: block;
     }
 
   .my-custom-class {
@@ -155,7 +153,7 @@ a:hover {
   color: #bf0000;
 }
 .custom-navbar {
-  background-color:  #f1f1f1; /* grey background */
+  background-color:  #f1f1f1; 
   padding: 12px 16px;
   display: flex;
   gap: 24px;
@@ -173,15 +171,13 @@ a:hover {
 }
 
 .nav-item:hover {
-  color: red; /* bold blue */
+  color: red;
   font-weight: bold;
-  /* box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2); */
 }
 
 .nav-item.active {
-  color: red; /* bold blue */
+  color: red; 
   font-weight: bold;
- /* // box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2); */
 }
 .custom-navbar {
   display: flex;
@@ -205,7 +201,6 @@ a:hover {
   border-bottom: 2px solid #0d6efd; /* primary */
   opacity: 1;
 }
-/* Home tab scrollable section */
 .homepage-container {
   max-width: 900px;
   margin: 0 auto;
@@ -231,23 +226,20 @@ html, body, #root {
   height: 100%;
 }
 
-/* Column layout: header, then nav, then a flexible main that scrolls */
 .dashboard-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* The main content takes remaining height and scrolls */
 .dashboard-container {
-  flex: 1;               /* fill leftover space */
-  overflow: auto;        /* scroll only this area */
+  flex: 1;             
+  overflow: auto;       
   padding: 1.25rem 1.5rem;
 }
 
 
 
-/* BRANCH image: tighter spacing */
 .home-branch {
   display: block;
   margin: 0.25rem auto;       /* almost no vertical margin */
@@ -255,14 +247,12 @@ html, body, #root {
   height: auto;
 }
 
-/* Ensure tagline hugs the image */
 .homepage-container p:last-of-type {
   margin-top: 0.25rem;  /* smaller gap below image */
   text-align: center;
   font-weight: 500;
 }
 
-/* Home content container */
 .homepage-container {
   max-width: 900px;
   margin: 0 auto;
@@ -270,7 +260,6 @@ html, body, #root {
   line-height: 1.6;
 }
 
-/* Tighten heading + list before the image */
 .homepage-container h3 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -281,7 +270,6 @@ html, body, #root {
   margin-bottom: 0.5rem;
 }
 
-/* Image wrapper (replaces my-4) */
 .home-branch-wrap {
   text-align: center;
   margin: 0.25rem 0; /* minimal vertical spacing */
@@ -302,3 +290,82 @@ html, body, #root {
   text-align: center;
   font-weight: 500;
 }
+
+/* Typography & layout refinements */
+.homepage-container {
+  max-width: 800px;      /* slightly narrower to improve readability */
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Heading style similar to RCC */
+.homepage-container h2 {
+  font-size: 2.25rem;     /* large but not huge */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.homepage-container h3 {
+  font-size: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.homepage-container p {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.homepage-container ul {
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+}
+
+.homepage-container ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.home-tagline {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  text-align: center;
+  font-weight: 600;
+  color: #222;
+}
+
+.section-header {
+  background-color: #bf0000; /* red brand color */
+  padding: 1.5rem;
+  text-align: center;
+  margin: 0 -1.25rem 1.5rem; /* full-width bleed inside container */
+}
+
+.section-header h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.section-subheader {
+  background-color: #bf0000;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem -1.25rem 1rem;
+}
+
+.section-subheader h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+
