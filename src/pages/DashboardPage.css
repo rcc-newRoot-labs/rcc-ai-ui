@@ -183,3 +183,43 @@ a:hover {
   font-weight: bold;
  /* // box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2); */
 }
+.custom-navbar {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.custom-navbar .nav-item {
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  color: #111827;
+  opacity: 0.8;
+}
+
+.custom-navbar .nav-item.active {
+  border-bottom: 2px solid #0d6efd; /* primary */
+  opacity: 1;
+}
+/* Home tab scrollable section */
+.homepage-container {
+  max-height: calc(100vh - 160px); /* leave space for header + navbar */
+  overflow-y: auto;               /* allow scrolling if content is long */
+  padding: 1.5rem;
+}
+
+/* Branch image */
+.home-branch {
+  display: block;
+  margin: 1.5rem auto;    /* slightly less spacing */
+  max-width: 400px;       /* reduce from 600px → 400px */
+  width: 90%;             /* scales on smaller screens */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+

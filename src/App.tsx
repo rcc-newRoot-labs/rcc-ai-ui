@@ -1,3 +1,4 @@
+import React, { JSX } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -5,23 +6,35 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import React from "react";
+
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 
+function PrivateRoute({ children }: { children: JSX.Element }) {
+  const isAuthenticated = Boolean(localStorage.getItem("user"));
+  return isAuthenticated ? children : <Navigate to="/" replace />;
+}
+
 const AppRoutes: React.FC = () => {
   const location = useLocation();
-  const isAuthenticated = !!localStorage.getItem("user");
 
   return (
     <Routes location={location} key={location.pathname}>
+      {/* Public route */}
       <Route path="/" element={<LoginPage />} />
+
+      {/* Protected route */}
       <Route
         path="/dashboard"
         element={
-          isAuthenticated ? <DashboardPage /> : <Navigate to="/" replace />
+          <PrivateRoute>
+            <DashboardPage />
+          </PrivateRoute>
         }
       />
+
+      {/* Catch-all: redirect unknown routes */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };
