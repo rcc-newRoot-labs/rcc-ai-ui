@@ -4,8 +4,6 @@ import {
   Container,
   Form,
   Button,
-  Tabs,
-  Tab,
   Card,
   InputGroup,
   Alert,
@@ -15,7 +13,6 @@ import {
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [key, setKey] = useState<string>("signin");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [remember, setRemember] = useState<boolean>(true);
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -38,14 +35,13 @@ const LoginPage: React.FC = () => {
   }, [location.pathname]);
 
   const handleLogin = async () => {
-    // PERMISSIVE: only require non-empty values
     if (!email.trim() || !password.trim()) {
       setError("Please enter email and password.");
       return;
     }
     try {
       setSubmitting(true);
-      await new Promise((r) => setTimeout(r, 250)); // simulate call
+      await new Promise((r) => setTimeout(r, 250)); // simulate API
 
       const payload = JSON.stringify({ email: email.trim() });
 
@@ -77,7 +73,7 @@ const LoginPage: React.FC = () => {
         style={{ width: "100%", maxWidth: "420px" }}
         className="p-4 shadow-sm"
       >
-        <div className="d-flex align-items-center mb-2">
+        <div className="d-flex align-items-center mb-3">
           <img
             src="new_root_logo.png"
             alt="newRoot Labs"
@@ -89,15 +85,6 @@ const LoginPage: React.FC = () => {
             newRoot Labs
           </h5>
         </div>
-
-        <Tabs
-          activeKey={key}
-          onSelect={(k: string | null) => setKey(k ?? "signin")}
-          className="mb-3"
-        >
-          <Tab eventKey="signin" title="Sign In" />
-          <Tab eventKey="create" title="Create Account" />
-        </Tabs>
 
         {error && (
           <Alert variant="danger" className="py-2">
