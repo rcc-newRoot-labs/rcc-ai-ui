@@ -262,3 +262,43 @@ html, body, #root {
   font-weight: 500;
 }
 
+/* Home content container */
+.homepage-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  line-height: 1.6;
+}
+
+/* Tighten heading + list before the image */
+.homepage-container h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.homepage-container ul {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Image wrapper (replaces my-4) */
+.home-branch-wrap {
+  text-align: center;
+  margin: 0.25rem 0; /* minimal vertical spacing */
+}
+
+/* Image itself */
+.home-branch {
+  display: inline-block;
+  vertical-align: middle;
+  width: clamp(160px, 20vw, 240px);
+  height: auto;
+  margin: 0;
+}
+
+/* Closing tagline */
+.home-tagline {
+  margin-top: 0.25rem;
+  text-align: center;
+  font-weight: 500;
+}

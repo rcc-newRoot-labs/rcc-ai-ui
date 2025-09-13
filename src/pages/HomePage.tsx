@@ -1,10 +1,9 @@
 import React from "react";
-// import "./HomePage.css"; // optional, for styling
 
 const HomePage: React.FC = () => {
   return (
-    <div className="homepage-container p-4">
-      <h1 className="mb-3">Welcome to newRoot Labs</h1>
+    <section className="homepage-container">
+      <h2 className="mb-3">Welcome to newRoot Labs</h2>
 
       <p>
         Explore our innovation lab, <strong>newRoot Labs</strong>, where
@@ -28,9 +27,9 @@ const HomePage: React.FC = () => {
         scale it.
       </p>
 
-      <h2 className="mt-4">
+      <h3 className="mt-2">
         We call it B.R.A.N.C.H.—our six-phase innovation framework:
-      </h2>
+      </h3>
       <ul>
         <li>
           <strong>Brainstorm</strong> | Submit ideas in a lightweight intake
@@ -54,21 +53,20 @@ const HomePage: React.FC = () => {
         </li>
       </ul>
 
-      {/* BRANCH image at the bottom (served from public/)
-      <div className="text-center my-4">
+      {/* Image at the bottom — served from /public */}
+      <div className="home-branch-wrap">
         <img
           src="/BranchImage.png"
           alt="BRANCH Innovation Framework"
           className="home-branch"
-          style={{ maxWidth: 600, width: "100%", height: "auto" }}
         />
-      </div> */}
+      </div>
 
-      <p className="mt-4">
+      <p className="home-tagline">
         <strong>newRoot Labs</strong> is where innovation takes root—and where
         ideas grow into operational advantage.
       </p>
-    </div>
+    </section>
   );
 };
 
