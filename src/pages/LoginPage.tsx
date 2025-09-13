@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Container,
@@ -8,35 +8,88 @@ import {
   Tab,
   Card,
   InputGroup,
+  Alert,
+  Spinner,
 } from "react-bootstrap";
-import { useEffect } from "react";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [key, setKey] = useState<string>("signin");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [remember, setRemember] = useState<boolean>(true);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
   const navigate = useNavigate();
   const location = useLocation();
 
+  // If already logged in, bounce to dashboard
+  useEffect(() => {
+    if (localStorage.getItem("user")) navigate("/dashboard", { replace: true });
+  }, [navigate]);
+
+  // Reset form when route changes
   useEffect(() => {
     setEmail("");
     setPassword("");
     setShowPassword(false);
+    setError(null);
   }, [location.pathname]);
 
-  const handleLogin = () => {
-    if (email && password) {
-      localStorage.setItem("user", JSON.stringify({ email }));
-      navigate("/dashboard");
-    } else {
-      alert("Please enter email and password");
+  const handleLogin = async () => {
+    // PERMISSIVE: only require non-empty values
+    if (!email.trim() || !password.trim()) {
+      setError("Please enter email and password.");
+      return;
+    }
+    try {
+      setSubmitting(true);
+      await new Promise((r) => setTimeout(r, 250)); // simulate call
+
+      const payload = JSON.stringify({ email: email.trim() });
+
+      if (remember) {
+        localStorage.setItem("user", payload);
+      } else {
+        sessionStorage.setItem("user", payload);
+        localStorage.setItem("user", payload);
+      }
+
+      navigate("/dashboard", { replace: true });
+    } catch {
+      setError("Unable to sign in. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLFormElement> = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleLogin();
     }
   };
 
   return (
     <Container className="d-flex justify-content-center align-items-center min-vh-100">
-      <Card style={{ width: "100%", maxWidth: "400px" }} className="p-4 shadow">
+      <Card
+        style={{ width: "100%", maxWidth: "420px" }}
+        className="p-4 shadow-sm"
+      >
+        <div className="d-flex align-items-center mb-2">
+          <img
+            src="new_root_logo.png"
+            alt="newRoot Labs"
+            width={64}
+            height={38}
+            style={{ marginRight: 8 }}
+          />
+          <h5 className="m-0" style={{ color: "#bf0000" }}>
+            newRoot Labs
+          </h5>
+        </div>
+
         <Tabs
           activeKey={key}
           onSelect={(k: string | null) => setKey(k ?? "signin")}
@@ -46,16 +99,25 @@ const LoginPage: React.FC = () => {
           <Tab eventKey="create" title="Create Account" />
         </Tabs>
 
-        <Form>
+        {error && (
+          <Alert variant="danger" className="py-2">
+            {error}
+          </Alert>
+        )}
+
+        <Form noValidate onKeyDown={onKeyDown}>
           <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter your Email"
+              placeholder="you@company.com"
               value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setEmail(e.target.value)
-              }
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (error) setError(null);
+              }}
+              autoComplete="username"
+              required
             />
           </Form.Group>
 
@@ -64,30 +126,64 @@ const LoginPage: React.FC = () => {
             <InputGroup>
               <Form.Control
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter your Password"
+                placeholder="••••••••"
                 value={password}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value)
-                }
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (error) setError(null);
+                }}
+                autoComplete="current-password"
+                required
               />
               <Button
                 variant="outline-secondary"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowPassword((s) => !s)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? "Hide" : "Show"}
               </Button>
             </InputGroup>
           </Form.Group>
 
-          <Button variant="primary" className="w-100" onClick={handleLogin}>
-            Sign in
-          </Button>
-
-          <div className="text-center mt-3">
-            <Button variant="link" className="p-0">
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <Form.Check
+              type="checkbox"
+              id="remember"
+              label="Remember me"
+              checked={remember}
+              onChange={(e) => setRemember(e.currentTarget.checked)}
+            />
+            <Button
+              variant="link"
+              className="p-0"
+              onClick={(e) => e.preventDefault()}
+            >
               Forgot your password?
             </Button>
           </div>
+
+          <Button
+            variant="primary"
+            className="w-100"
+            onClick={handleLogin}
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="me-2"
+                />
+                Signing in…
+              </>
+            ) : (
+              "Sign in"
+            )}
+          </Button>
         </Form>
       </Card>
     </Container>

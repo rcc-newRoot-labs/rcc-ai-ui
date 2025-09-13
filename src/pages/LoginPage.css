@@ -1,0 +1,137 @@
+.auth-wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f7f7f7;
+  padding: 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #bf0000; /* subtle brand hint */
+}
+
+.auth-title {
+  margin: 0.25rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+.form-field {
+  margin-bottom: 0.875rem;
+}
+
+.form-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+}
+
+.form-field input[type="email"],
+.form-field input[type="password"],
+.password-input input {
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form-field input:focus {
+  border-color: #bf0000;
+  box-shadow: 0 0 0 3px rgba(191, 0, 0, 0.1);
+}
+
+.password-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.password-input .link-btn {
+  border: none;
+  background: none;
+  color: #555;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.password-input .link-btn:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.muted-link {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.muted-link:hover { text-decoration: underline; }
+
+.error-banner {
+  background: #ffecef;
+  color: #9b1c31;
+  border: 1px solid #f5c2cb;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #bf0000;
+  color: #fff;
+}
+.btn-primary:hover { background-color: #a00000; }
+.btn-primary:disabled {
+  background: #d7d7d7;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.hint {
+  display: block;
+  color: #777;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
