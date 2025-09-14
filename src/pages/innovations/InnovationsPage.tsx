@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 type InnovationCard = {
   id: number;
@@ -46,6 +47,8 @@ const CARDS: Readonly<InnovationCard[]> = [
 ];
 
 const InnovationsPage: React.FC = () => {
+  const navigate = useNavigate();
+  const navigateTo = (id: number) =>  navigate('/innovationDetail/${id}');
   return (
     <section aria-labelledby="innovations-title">
       <h2 id="innovations-title" className="mb-2">
@@ -79,16 +82,8 @@ const InnovationsPage: React.FC = () => {
               <div className="card-hover-text">
                 <p className="mb-3">{card.description}</p>
                 <div className="card-footer">
-                 
-                  <a
-                    href="https://www.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                    aria-label={`Interact with ${card.title}`}
-                  >
-                    Interact
-                  </a>
+                 <button onClick={() => navigateTo(card.id)} type="button" className="btn btn-primary">
+                  Interact</button>
                 </div>
               </div>
             </article>

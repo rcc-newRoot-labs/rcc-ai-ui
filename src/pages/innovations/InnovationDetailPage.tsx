@@ -1,23 +1,22 @@
 import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 const InnovationDetailPage: React.FC = () => {
   return (
-    <section aria-labelledby="innovations-title">
-      <h2 id="innovations-title" className="mb-2">
-        AI, Data, &amp; Analytics
-      </h2>
-
-      <p className="mb-4">
-        Explore initiatives across analytics, automation, and secure cloud
-        delivery. These focus areas help teams move from raw data to mission
-        value—rapidly, safely, and at scale.
-      </p>
-
-      <h3 id="cards-heading" className="visually-hidden">
-        Innovation Areas
-      </h3>
-
-    </section>
+   
+    <Container fluid className="vh-100 d-flex align-items-center">
+      <Row className="w-100">
+        <Col md={6} className="p-4 border-end">
+          <h3>Left Section</h3>
+          
+        </Col>
+        <Col md={6} className="p-4">
+          <h3>Right Section</h3>
+          
+        </Col>
+      </Row>
+    </Container>
+  
   );
 };
 
