@@ -15,5 +15,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src",
+   //"src/types/**/*.d.ts" // Include your declaration files
+   ]
 }

@@ -11,7 +11,6 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import InnovationsPage from "./pages/innovations/InnovationsPage";
 import InnovationDetailPage from "./pages/innovations/InnovationDetailPage";
-import ReadMeComponent from "./pages/innovations/ReadMeComponent";
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const isAuthenticated = Boolean(localStorage.getItem("user"));
@@ -47,13 +46,6 @@ const AppRoutes: React.FC = () => {
            <InnovationDetailPage />
           }
       />
-       <Route path="readMe" 
-            element={
-            <PrivateRoute>
-              <ReadMeComponent />
-            </PrivateRoute>
-            }
-          />
       
       {/* Catch-all: redirect unknown routes */}
       <Route path="*" element={<Navigate to="/" replace />} />

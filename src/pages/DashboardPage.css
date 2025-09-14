@@ -110,6 +110,18 @@
   align-items: flex-end !important;
 }
 
+.readmeViewer-content{
+  color: #333;
+  background-color: #cecbcb;
+  font-family:  IBM Plex Sans regular;
+  border: #555555;
+  border-width: 1px;
+}
+.widgetViewer-content{
+  color: #333;
+  background-color: #c6c3c3;
+  border: #555555;
+}
 .welcome-banner {
   width: 100%;
   display: flex;
