@@ -4,7 +4,7 @@ import "./DashboardPage.css";
 
 // Lazy components
 const HomePage = React.lazy(() => import("./HomePage"));
-const InnovationsPage = React.lazy(() => import("./InnovationsPage"));
+const InnovationsPage = React.lazy(() => import("./innovations/InnovationsPage"));
 
 type StoredUser = { email?: string };
 type TabKey = "home" | "innovations" | "marketing";

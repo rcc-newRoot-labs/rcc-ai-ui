@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 type InnovationCard = {
   id: number;
@@ -66,22 +66,20 @@ const InnovationsPage: React.FC = () => {
         {CARDS.map((card) => (
           <li key={card.id} className="dashboard-card" aria-label={card.title}>
             <article className="card-body">
-              <div className="card-text d-flex align-items-center gap-3">
+              <div className="card-text d-flex gap-1">
                 <img
                   src={card.image}
                   alt={`${card.title} illustration`}
-                  width={200}
-                  height={80}
                   loading="lazy"
                   decoding="async"
                 />
-                <h4 className="m-0">{card.title}</h4>
+                <h5 className="card-title">{card.title}</h5>
               </div>
 
               <div className="card-hover-text">
-                <h3 className="h5">{card.title}</h3>
                 <p className="mb-3">{card.description}</p>
-                <div className="card-footer bg-transparent border-success p-0">
+                <div className="card-footer">
+                 
                   <a
                     href="https://www.google.com"
                     target="_blank"

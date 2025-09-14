@@ -28,7 +28,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 250px;
   padding: 1rem;
-  text-align: center;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -46,10 +45,11 @@
 }
 
 .dashboard-card img {
-  width: 80px;
-  height: 80px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
   margin-bottom: 1rem;
+  align-content: initial;
 }
 
 .card-grid {
@@ -77,6 +77,37 @@
   height: 60px;
   object-fit: contain;
   margin-bottom: 10px;
+}
+.card-title {
+    color: #c00000;
+    letter-spacing: 0em;
+    align-content: initial;
+    align-self: flex-start;
+    font-family: IBM Plex Sans Semi Bold ;
+}
+.card-title-preview {
+    color: #333;
+    align-content: initial;
+    align-self: flex-start;
+    font-family: IBM Plex Sans Semi Bold ;
+}
+
+.card-hover-text {
+    display: none;
+    font-family:  IBM Plex Sans regular;
+}
+
+.card:hover .card-text {
+    display: none;
+}
+
+.card:hover .card-hover-text {
+    display: block;
+}
+
+.card-footer{
+  background-color: transparent;
+  align-items: flex-end !important;
 }
 
 .welcome-banner {
@@ -107,14 +138,33 @@
   margin-right: 16px;
 }
 
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #c00000 ;
+    --bs-btn-border-color: #c00000 ;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #00000099;
+    --bs-btn-hover-border-color: #00000099;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #00000099;
+    --bs-btn-active-border-color: #00000099;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #c00000 ;
+    --bs-btn-disabled-border-color: #c00000 ;
+}
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #c00000  !important;
     color: rgb(244, 244, 241); /* Yellow text */
 }
 
 
+
+
 .btn-primary:hover {
-  background-color: #bf0000;
+  background-color: #c00000 ;
 a2 {
     color: #0d0d0d;
     text-decoration: none;
@@ -137,20 +187,9 @@ a{
 a:hover {
   background-color: #c6c5c5;
 }
- .card-hover-text {
-      display: none;
-    }
 
-    .card:hover .card-text {
-      display: none;
-    }
-
-    .card:hover .card-hover-text {
-      display: block;
-    }
-
-  .my-custom-class {
-  font-family: 'Wix Madefor', sans-serif;
+.my-custom-class {
+  font-family: IBM Plex Sans regular ;
   color: #bf0000;
 }
 .custom-navbar {
@@ -172,12 +211,12 @@ a:hover {
 }
 
 .nav-item:hover {
-  color: red;
+  color: #c00000 ;
   font-weight: bold;
 }
 
 .nav-item.active {
-  color: red; 
+  color: #c00000 ; 
   font-weight: bold;
 }
 .custom-navbar {
@@ -199,7 +238,7 @@ a:hover {
 }
 
 .custom-navbar .nav-item.active {
-  border-bottom: 2px solid #0d6efd; /* primary */
+  border-bottom: 2px solid #c00000 ; /* primary */
   opacity: 1;
 }
 .homepage-container {
@@ -369,4 +408,3 @@ html, body, #root {
   margin: 0;
   font-weight: 600;
 }
-
