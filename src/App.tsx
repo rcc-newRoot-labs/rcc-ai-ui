@@ -4,59 +4,48 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation,
 } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import InnovationsPage from "./pages/innovations/InnovationsPage";
 import InnovationDetailPage from "./pages/innovations/InnovationDetailPage";
+import MarketingPage from "./pages/MarketingPage"; // ← new
+import Layout from "./pages/Layout";
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const isAuthenticated = Boolean(localStorage.getItem("user"));
   return isAuthenticated ? children : <Navigate to="/" replace />;
 }
 
-const AppRoutes: React.FC = () => {
-  const location = useLocation();
-
-  return (
-    <Routes location={location} key={location.pathname}>
-      {/* Public route */}
-      <Route path="/" element={<LoginPage />} />
-
-      {/* Protected route */}
-      <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute>
-            <DashboardPage />
-          </PrivateRoute>
-        }
-      />
-      <Route path="innovations" 
-            element={
-            <PrivateRoute>
-              <InnovationsPage />
-            </PrivateRoute>
-            }
-      />
-      <Route path="innovationDetail/:id"
-          element={
-           <InnovationDetailPage />
-          }
-      />
-      
-      {/* Catch-all: redirect unknown routes */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  );
-};
-
 const App: React.FC = () => {
   return (
     <Router>
-      <AppRoutes />
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<LoginPage />} />
+
+        {/* Protected with shared layout */}
+        <Route
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/innovations" element={<InnovationsPage />} />
+          <Route
+            path="/innovationDetail/:id"
+            element={<InnovationDetailPage />}
+          />
+          <Route path="/marketing" element={<MarketingPage />} />{" "}
+          {/* ← add this */}
+        </Route>
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </Router>
   );
 };

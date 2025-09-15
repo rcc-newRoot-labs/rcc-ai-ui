@@ -21,12 +21,20 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // If already logged in, bounce to dashboard
+  // Clear form state on mount
+  useEffect(() => {
+    setEmail("");
+    setPassword("");
+    setShowPassword(false);
+    setError(null);
+  }, []);
+
+  // Redirect if already logged in
   useEffect(() => {
     if (localStorage.getItem("user")) navigate("/dashboard", { replace: true });
   }, [navigate]);
 
-  // Reset form when route changes
+  // Clear again if route changes
   useEffect(() => {
     setEmail("");
     setPassword("");
@@ -41,10 +49,9 @@ const LoginPage: React.FC = () => {
     }
     try {
       setSubmitting(true);
-      await new Promise((r) => setTimeout(r, 250)); // simulate API
+      await new Promise((r) => setTimeout(r, 250)); // simulate API call
 
       const payload = JSON.stringify({ email: email.trim() });
-
       if (remember) {
         localStorage.setItem("user", payload);
       } else {
@@ -92,18 +99,19 @@ const LoginPage: React.FC = () => {
           </Alert>
         )}
 
-        <Form noValidate onKeyDown={onKeyDown}>
+        {/* Form START */}
+        <Form noValidate onKeyDown={onKeyDown} autoComplete="off">
           <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
+              name="login-email"
               type="email"
-              placeholder="you@company.com"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
                 if (error) setError(null);
               }}
-              autoComplete="username"
+              autoComplete="off"
               required
             />
           </Form.Group>
@@ -112,14 +120,14 @@ const LoginPage: React.FC = () => {
             <Form.Label>Password</Form.Label>
             <InputGroup>
               <Form.Control
+                name="login-pass"
                 type={showPassword ? "text" : "password"}
-                placeholder="••••••••"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                   if (error) setError(null);
                 }}
-                autoComplete="current-password"
+                autoComplete="new-password"
                 required
               />
               <Button
@@ -172,6 +180,7 @@ const LoginPage: React.FC = () => {
             )}
           </Button>
         </Form>
+        {/* Form END */}
       </Card>
     </Container>
   );

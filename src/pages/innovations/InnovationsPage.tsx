@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 type InnovationCard = {
   id: number;
@@ -48,13 +48,13 @@ const CARDS: Readonly<InnovationCard[]> = [
 
 const InnovationsPage: React.FC = () => {
   const navigate = useNavigate();
-  const navigateTo = (id: number) =>  navigate('/innovationDetail/${id}');
+  const navigateTo = (id: number) => navigate(`/innovationDetail/${id}`);
+
   return (
     <section aria-labelledby="innovations-title">
       <h2 id="innovations-title" className="mb-2">
         AI, Data, &amp; Analytics
       </h2>
-
       <p className="mb-4">
         Explore initiatives across analytics, automation, and secure cloud
         delivery. These focus areas help teams move from raw data to mission
@@ -65,7 +65,7 @@ const InnovationsPage: React.FC = () => {
         Innovation Areas
       </h3>
 
-      <ul className="card-grid list-unstyled m-0 p-0" role="list">
+      <ul className="card-grid list-unstyled m-0 p-0">
         {CARDS.map((card) => (
           <li key={card.id} className="dashboard-card" aria-label={card.title}>
             <article className="card-body">
@@ -82,8 +82,13 @@ const InnovationsPage: React.FC = () => {
               <div className="card-hover-text">
                 <p className="mb-3">{card.description}</p>
                 <div className="card-footer">
-                 <button onClick={() => navigateTo(card.id)} type="button" className="btn btn-primary">
-                  Interact</button>
+                  <button
+                    onClick={() => navigateTo(card.id)}
+                    type="button"
+                    className="btn btn-primary"
+                  >
+                    Interact
+                  </button>
                 </div>
               </div>
             </article>
